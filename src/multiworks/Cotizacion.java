@@ -1,45 +1,49 @@
 package multiworks;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Cotizacion {
     private int idCotizacion;
     private int idCliente;
-    private Date fechaCreacion;
     private String estado;
     private double costoTotal;
+    private LocalDate fechaCreacion;
 
-    public Cotizacion(int idCotizacion, int idCliente) {
+    public Cotizacion(int idCotizacion, int idCliente, String estado, double costoTotal, LocalDate fechaCreacion) {
         this.idCotizacion = idCotizacion;
         this.idCliente = idCliente;
-        this.fechaCreacion = new Date();
-        this.estado = "En proceso";
-        this.costoTotal = 0.0;
+        this.estado = estado;
+        this.costoTotal = costoTotal;
+        this.fechaCreacion = fechaCreacion;
     }
 
     public void crearCotizacion() {
-        System.out.println("🧾 Cotización creada para Cliente ID: " + idCliente);
+        System.out.println("✅ Cotización registrada:");
+        System.out.println("ID: " + idCotizacion);
+        System.out.println("Cliente ID: " + idCliente);
+        System.out.println("Estado: " + estado);
+        System.out.println("Costo Total: $" + costoTotal);
+        System.out.println("Fecha de Creación: " + fechaCreacion);
     }
 
-    public void calcularCosto(double base, double extra) {
-        this.costoTotal = base + extra;
-        System.out.println("💰 Costo total actualizado: $" + costoTotal);
+    // Getters para mostrar en tabla
+    public int getIdCotizacion() {
+        return idCotizacion;
     }
 
-    public void finalizarCotizacion() {
-        this.estado = "Finalizada";
-        System.out.println("✅ Cotización finalizada.");
-    }
-
-    public double getCostoTotal() {
-        return costoTotal;
+    public int getIdCliente() {
+        return idCliente;
     }
 
     public String getEstado() {
         return estado;
     }
 
-    public int getIdCotizacion() {
-        return idCotizacion;
+    public double getCostoTotal() {
+        return costoTotal;
+    }
+
+    public LocalDate getFechaCreacion() {
+        return fechaCreacion;
     }
 }

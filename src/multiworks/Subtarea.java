@@ -14,19 +14,27 @@ public class Subtarea {
     }
 
     public void registrarSubtarea() {
-        System.out.println("📌 Subtarea registrada: " + titulo);
+        System.out.println("✅ Subtarea registrada:");
+        System.out.println("ID Subtarea: " + idSubtarea);
+        System.out.println("ID Asignación: " + idAsignacion);
+        System.out.println("Título: " + titulo);
+        System.out.println("Descripción: " + descripcion);
     }
 
-    public void editarSubtarea(String nuevoTitulo) {
-        this.titulo = nuevoTitulo;
-        System.out.println("✏️ Subtarea renombrada a: " + titulo);
+    // Getters para la tabla
+    public int getIdSubtarea() {
+        return idSubtarea;
+    }
+
+    public int getIdAsignacion() {
+        return idAsignacion;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public int getIdSubtarea() {
-        return idSubtarea;
+    public String getDescripcion() {
+        return descripcion;
     }
 }

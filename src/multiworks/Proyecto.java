@@ -1,36 +1,54 @@
 package multiworks;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Proyecto {
     private int idProyecto;
     private int idCliente;
     private String nombreProyecto;
     private String estado;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
 
     public Proyecto(int idProyecto, int idCliente, String nombreProyecto) {
         this.idProyecto = idProyecto;
         this.idCliente = idCliente;
         this.nombreProyecto = nombreProyecto;
-        this.fechaInicio = new Date();
-        this.estado = "En curso";
+        this.estado = "En desarrollo";
+        this.fechaInicio = LocalDate.now();
+        this.fechaFin = null;
     }
 
     public void crearProyecto() {
-        System.out.println("📁 Proyecto creado: " + nombreProyecto);
+        System.out.println("✅ Proyecto registrado:");
+        System.out.println("ID: " + idProyecto);
+        System.out.println("Cliente ID: " + idCliente);
+        System.out.println("Nombre: " + nombreProyecto);
+        System.out.println("Estado: " + estado);
+        System.out.println("Fecha de inicio: " + fechaInicio);
+        System.out.println("Fecha de fin: " + (fechaFin != null ? fechaFin : "No definida"));
     }
 
-    public void editarProyecto(String nuevoNombre) {
-        this.nombreProyecto = nuevoNombre;
-        System.out.println("✏️ Proyecto renombrado a: " + nombreProyecto);
+    // Setters para campos que se asignan luego
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public void finalizarProyecto() {
-        this.estado = "Finalizado";
-        this.fechaFin = new Date();
-        System.out.println("✅ Proyecto finalizado.");
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    // Getters para mostrar en la tabla
+    public int getIdProyecto() {
+        return idProyecto;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
     }
 
     public String getNombreProyecto() {
@@ -41,7 +59,11 @@ public class Proyecto {
         return estado;
     }
 
-    public int getIdProyecto() {
-        return idProyecto;
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public LocalDate getFechaFin() {
+        return fechaFin;
     }
 }

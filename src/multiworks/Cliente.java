@@ -1,6 +1,6 @@
 package multiworks;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Cliente {
     private int idCliente;
@@ -12,11 +12,10 @@ public class Cliente {
     private String direccion;
     private String estado;
     private String creadoPor;
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
 
-    // Constructor
-    public Cliente(int idCliente, String nombre, String dui, String tipoPersona, String telefono,
-                   String correo, String direccion, String creadoPor) {
+    public Cliente(int idCliente, String nombre, String dui, String tipoPersona,
+                   String telefono, String correo, String direccion, String creadoPor) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.dui = dui;
@@ -26,28 +25,28 @@ public class Cliente {
         this.direccion = direccion;
         this.estado = "Activo";
         this.creadoPor = creadoPor;
-        this.fechaCreacion = new Date();
+        this.fechaCreacion = LocalDate.now();
     }
 
-    // Método para registrar cliente
     public void registrarCliente() {
-        System.out.println("✅ Cliente registrado: " + nombre);
+        System.out.println("✅ Cliente registrado:");
+        System.out.println("ID: " + idCliente);
+        System.out.println("Nombre: " + nombre);
+        System.out.println("DUI: " + dui);
+        System.out.println("Tipo: " + tipoPersona);
+        System.out.println("Teléfono: " + telefono);
+        System.out.println("Correo: " + correo);
+        System.out.println("Dirección: " + direccion);
+        System.out.println("Estado: " + estado);
+        System.out.println("Creado por: " + creadoPor);
+        System.out.println("Fecha de creación: " + fechaCreacion);
     }
 
-    // Método para editar cliente (solo de ejemplo)
-    public void editarCliente(String nuevoNombre, String nuevoCorreo) {
-        this.nombre = nuevoNombre;
-        this.correo = nuevoCorreo;
-        System.out.println("✏️ Cliente actualizado.");
+    // Getters para tabla o uso externo
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    // Método para inactivar cliente
-    public void inactivarCliente() {
-        this.estado = "Inactivo";
-        System.out.println("⚠️ Cliente inactivado.");
-    }
-
-    // Getters necesarios para listados
     public String getNombre() {
         return nombre;
     }
@@ -56,7 +55,19 @@ public class Cliente {
         return dui;
     }
 
+    public String getTipoPersona() {
+        return tipoPersona;
+    }
+
     public String getEstado() {
         return estado;
+    }
+
+    public String getCreadoPor() {
+        return creadoPor;
+    }
+
+    public LocalDate getFechaCreacion() {
+        return fechaCreacion;
     }
 }

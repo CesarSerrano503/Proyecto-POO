@@ -1,109 +1,73 @@
 package multiworks;
 
-import java.io.Console;
-import java.util.ArrayList;
-import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Console console = System.console();
+        SwingUtilities.invokeLater(() -> new MenuFrame());
+    }
 
-        String usuarioCorrecto = "cesar";
-        String contrasenaCorrecta = "12345";
-        boolean accesoConcedido = false;
-        int intentos = 0;
+    public static class MenuFrame extends JFrame {
 
-        ArrayList<Cliente> listaClientes = new ArrayList<>();
+        public MenuFrame() {
+            setTitle("Menú Principal - MultiWorks");
+            setSize(500, 550);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setLocationRelativeTo(null);
+            setResizable(false);
 
-        System.out.println("🔒 Bienvenido a MultiWorks");
+            JPanel panel = new JPanel(new BorderLayout());
 
-        while (intentos < 5 && !accesoConcedido) {
-            System.out.print("Usuario: ");
-            String usuarioIngresado = scanner.nextLine();
+            JLabel titulo = new JLabel("Menú Principal", SwingConstants.CENTER);
+            titulo.setFont(new Font("Arial", Font.BOLD, 22));
+            titulo.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
+            panel.add(titulo, BorderLayout.NORTH);
 
-            String contrasenaIngresada;
-            if (console != null) {
-                char[] passwordChars = console.readPassword("Contraseña: ");
-                contrasenaIngresada = new String(passwordChars);
-            } else {
-                System.out.print("Contraseña (visible): ");
-                contrasenaIngresada = scanner.nextLine();
-            }
+            JPanel botonesPanel = new JPanel(new GridLayout(7, 1, 10, 10));
+            botonesPanel.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50));
 
-            if (usuarioIngresado.equals(usuarioCorrecto) && contrasenaIngresada.equals(contrasenaCorrecta)) {
-                accesoConcedido = true;
-                System.out.println("✅ Acceso concedido.\n");
-            } else {
-                intentos++;
-                System.out.println("❌ Credenciales incorrectas. Intento " + intentos + " de 5.");
-                if (intentos == 5) {
-                    System.out.println("🚫 Has excedido el número de intentos permitidos.");
+            JButton btnClientes = new JButton("Clientes");
+            JButton btnEmpleados = new JButton("Empleados");
+            JButton btnProyectos = new JButton("Proyectos");
+            JButton btnCotizaciones = new JButton("Cotizaciones");
+            JButton btnAsignaciones = new JButton("Asignaciones");
+            JButton btnSubtareas = new JButton("Subtareas");
+            JButton btnSalir = new JButton("Salir");
+
+            botonesPanel.add(btnClientes);
+            botonesPanel.add(btnEmpleados);
+            botonesPanel.add(btnProyectos);
+            botonesPanel.add(btnCotizaciones);
+            botonesPanel.add(btnAsignaciones);
+            botonesPanel.add(btnSubtareas);
+            botonesPanel.add(btnSalir);
+
+            panel.add(botonesPanel, BorderLayout.CENTER);
+            add(panel);
+
+            // Acciones de los botones
+            btnClientes.addActionListener(e -> new ClienteFrame());
+            btnEmpleados.addActionListener(e -> new EmpleadoFrame());
+            btnProyectos.addActionListener(e -> new ProyectoFrame());
+            btnCotizaciones.addActionListener(e -> new CotizacionFrame());
+            btnAsignaciones.addActionListener(e -> new AsignacionActividadFrame());
+            btnSubtareas.addActionListener(e -> new SubtareaFrame());
+
+            btnSalir.addActionListener(e -> {
+                int confirm = JOptionPane.showConfirmDialog(
+                        this,
+                        "¿Seguro que deseas salir?",
+                        "Salir",
+                        JOptionPane.YES_NO_OPTION
+                );
+                if (confirm == JOptionPane.YES_OPTION) {
                     System.exit(0);
                 }
-            }
+            });
+
+            setVisible(true);
         }
-
-        // Menú principal
-        int opcion = 0;
-        while (opcion != 5) {
-            System.out.println("\n📋 Menú Principal:");
-            System.out.println("1. Registrar Cliente");
-            System.out.println("2. Registrar Empleado");
-            System.out.println("3. Registrar Proyecto");
-            System.out.println("4. Ver lista de clientes");
-            System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: ");
-            opcion = scanner.nextInt();
-            scanner.nextLine(); // limpiar buffer
-
-            switch (opcion) {
-                case 1:
-                    System.out.print("Nombre del cliente: ");
-                    String nombreCliente = scanner.nextLine();
-                    System.out.print("DUI: ");
-                    String duiCliente = scanner.nextLine();
-                    Cliente cliente = new Cliente(1, nombreCliente, duiCliente, "Natural", "7777-8888", "cliente@correo.com", "San Salvador", "cesar");
-                    cliente.registrarCliente();
-                    listaClientes.add(cliente);
-                    break;
-
-                case 2:
-                    System.out.print("Nombre del empleado: ");
-                    String nombreEmpleado = scanner.nextLine();
-                    System.out.print("DUI: ");
-                    String duiEmpleado = scanner.nextLine();
-                    Empleado empleado = new Empleado(1, nombreEmpleado, duiEmpleado, "Natural", "Permanente", "6666-5555", "empleado@correo.com", "Santa Tecla", "cesar");
-                    empleado.registrarEmpleado();
-                    break;
-
-                case 3:
-                    System.out.print("Nombre del proyecto: ");
-                    String nombreProyecto = scanner.nextLine();
-                    Proyecto proyecto = new Proyecto(1, 1, nombreProyecto); // ID cliente simulado
-                    proyecto.crearProyecto();
-                    break;
-
-                case 4:
-                    System.out.println("\n📄 Lista de Clientes:");
-                    if (listaClientes.isEmpty()) {
-                        System.out.println("No hay clientes registrados.");
-                    } else {
-                        for (Cliente c : listaClientes) {
-                            System.out.println("- " + c.getNombre() + " | DUI: " + c.getDui());
-                        }
-                    }
-                    break;
-
-                case 5:
-                    System.out.println("👋 Cerrando sesión. ¡Hasta luego!");
-                    break;
-
-                default:
-                    System.out.println("❗ Opción no válida.");
-            }
-        }
-
-        scanner.close();
     }
 }

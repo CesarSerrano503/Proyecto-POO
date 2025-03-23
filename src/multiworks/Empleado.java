@@ -1,6 +1,6 @@
 package multiworks;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Empleado {
     private int idEmpleado;
@@ -13,7 +13,7 @@ public class Empleado {
     private String direccion;
     private String estado;
     private String creadoPor;
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
 
     public Empleado(int idEmpleado, String nombre, String dui, String tipoPersona, String tipoContratacion,
                     String telefono, String correo, String direccion, String creadoPor) {
@@ -25,27 +25,27 @@ public class Empleado {
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
-        this.creadoPor = creadoPor;
         this.estado = "Activo";
-        this.fechaCreacion = new Date();
+        this.creadoPor = creadoPor;
+        this.fechaCreacion = LocalDate.now();
     }
 
-    // Métodos
     public void registrarEmpleado() {
-        System.out.println("📌 Empleado registrado: " + nombre);
+        System.out.println("✅ Empleado registrado:");
+        System.out.println("ID: " + idEmpleado);
+        System.out.println("Nombre: " + nombre);
+        System.out.println("DUI: " + dui);
+        System.out.println("Tipo Persona: " + tipoPersona);
+        System.out.println("Tipo Contratación: " + tipoContratacion);
+        System.out.println("Teléfono: " + telefono);
+        System.out.println("Correo: " + correo);
+        System.out.println("Dirección: " + direccion);
+        System.out.println("Estado: " + estado);
+        System.out.println("Creado por: " + creadoPor);
+        System.out.println("Fecha de creación: " + fechaCreacion);
     }
 
-    public void editarEmpleado(String nuevoNombre) {
-        this.nombre = nuevoNombre;
-        System.out.println("✏️ Empleado actualizado: " + nombre);
-    }
-
-    public void inactivarEmpleado() {
-        this.estado = "Inactivo";
-        System.out.println("🛑 Empleado inactivado.");
-    }
-
-    // Getters útiles
+    // Getters para mostrar en tabla
     public int getIdEmpleado() {
         return idEmpleado;
     }
@@ -54,7 +54,15 @@ public class Empleado {
         return nombre;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getDui() {
+        return dui;
+    }
+
+    public String getTipoPersona() {
+        return tipoPersona;
+    }
+
+    public String getTipoContratacion() {
+        return tipoContratacion;
     }
 }
