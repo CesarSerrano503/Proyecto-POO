@@ -1,20 +1,28 @@
+// Código hecho por (Cesar Antonio Serrano Gutierrez)
+
+// Paquete donde se encuentra esta clase
 package multiworks;
 
+// Importación de la clase LocalDate para manejar fechas
 import java.time.LocalDate;
 
+// Definición de la clase Empleado
 public class Empleado {
-    private int idEmpleado;
-    private String nombre;
-    private String dui;
-    private String tipoPersona;
-    private String tipoContratacion;
-    private String telefono;
-    private String correo;
-    private String direccion;
-    private String estado;
-    private String creadoPor;
-    private LocalDate fechaCreacion;
 
+    // Atributos privados del empleado
+    private int idEmpleado;                // Identificador único del empleado
+    private String nombre;                // Nombre completo del empleado
+    private String dui;                   // Documento Único de Identidad del empleado
+    private String tipoPersona;           // Puede representar si es natural o jurídica
+    private String tipoContratacion;      // Tipo de contrato (temporal, indefinido, etc.)
+    private String telefono;              // Número de teléfono del empleado
+    private String correo;                // Dirección de correo electrónico
+    private String direccion;             // Dirección física
+    private String estado;                // Estado del empleado (activo/inactivo)
+    private String creadoPor;             // Usuario que creó el registro
+    private LocalDate fechaCreacion;      // Fecha en la que se creó el registro
+
+    // Constructor que inicializa los atributos del empleado
     public Empleado(int idEmpleado, String nombre, String dui, String tipoPersona, String tipoContratacion,
                     String telefono, String correo, String direccion, String creadoPor) {
         this.idEmpleado = idEmpleado;
@@ -25,11 +33,12 @@ public class Empleado {
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
-        this.estado = "Activo";
+        this.estado = "Activo";                   // Se asigna por defecto al crear
         this.creadoPor = creadoPor;
-        this.fechaCreacion = LocalDate.now();
+        this.fechaCreacion = LocalDate.now();     // Fecha actual del sistema
     }
 
+    // Método para imprimir por consola los datos del empleado registrado
     public void registrarEmpleado() {
         System.out.println("✅ Empleado registrado:");
         System.out.println("ID: " + idEmpleado);
@@ -45,7 +54,8 @@ public class Empleado {
         System.out.println("Fecha de creación: " + fechaCreacion);
     }
 
-    // Getters para mostrar en tabla
+    // Métodos "getter" que permiten acceder a atributos privados desde fuera de la clase
+
     public int getIdEmpleado() {
         return idEmpleado;
     }

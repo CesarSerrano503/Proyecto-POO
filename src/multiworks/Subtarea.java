@@ -1,11 +1,16 @@
+// Código hecho por (Cesar Antonio Serrano Gutierrez)
 package multiworks;
 
+// Clase que representa una subtarea dentro de una asignación
 public class Subtarea {
-    private int idSubtarea;
-    private int idAsignacion;
-    private String titulo;
-    private String descripcion;
 
+    // Atributos privados de la subtarea
+    private int idSubtarea;       // Identificador único de la subtarea
+    private int idAsignacion;     // ID de la asignación a la que pertenece
+    private String titulo;        // Título corto de la subtarea
+    private String descripcion;   // Descripción detallada de la subtarea
+
+    // Constructor: inicializa todos los atributos al crear la subtarea
     public Subtarea(int idSubtarea, int idAsignacion, String titulo, String descripcion) {
         this.idSubtarea = idSubtarea;
         this.idAsignacion = idAsignacion;
@@ -13,6 +18,7 @@ public class Subtarea {
         this.descripcion = descripcion;
     }
 
+    // Método que muestra la información de la subtarea en consola
     public void registrarSubtarea() {
         System.out.println("✅ Subtarea registrada:");
         System.out.println("ID Subtarea: " + idSubtarea);
@@ -21,7 +27,8 @@ public class Subtarea {
         System.out.println("Descripción: " + descripcion);
     }
 
-    // Getters para la tabla
+    // Getters: permiten acceder a los datos de la subtarea desde otras clases
+
     public int getIdSubtarea() {
         return idSubtarea;
     }
