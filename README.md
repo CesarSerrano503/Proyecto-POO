@@ -19,6 +19,7 @@ Cómo ejecutar el proyecto'
 
 
 Menú Principal
+
 ![image](https://github.com/user-attachments/assets/9de5d363-aa51-47a6-bf98-f12f2aaed021)
 
 Pantalla principal del sistema, desde la cual se accede a todos los módulos: clientes, empleados, proyectos, cotizaciones, asignaciones y subtareas.
