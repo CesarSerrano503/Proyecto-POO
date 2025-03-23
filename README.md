@@ -127,5 +127,6 @@ subtarea dentro del sistema.
 
 
 **Autor**: César Serrano  
+**Ayudante**: Sara Torres
 **Curso**: Programación Orientada a Objetos  
 **Año**: 2025
