@@ -1,94 +1,75 @@
-// Código hecho por (Sara Yamileth Torres Henriquez)
-package multiworks;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import java.time.LocalDateTime;
+public class Cliente {
+    // Atributos de la clase Cliente
+    private int idCliente;
+    private String nombre;
+    private String dui;
+    private String tipoPersona;
+    private String telefono;
+    private String correo;
+    private String direccion;
+    private String estado;
+    private String creadoPor;
+    private Date fechaCreacion;
 
-public class AsignacionActividad {
-    private int idAsignacion;
-    private int idCotizacion;
-    private int idEmpleado;
-    private String areaAsignada;
-    private double costoHora;
-    private LocalDateTime fechaHoraInicio;
-    private LocalDateTime fechaHoraFin;
-    private double cantidadHoras;
-    private double costoBase;
-    private double incrementoExtra;
-    private double costoTotal;
+    // Lista de cotizaciones asociadas al cliente
+    private List<Cotizacion> cotizaciones;
+    // Lista de proyectos asociados al cliente
+    private List<Proyecto> proyectos;
 
-    public AsignacionActividad(int idAsignacion, int idCotizacion, int idEmpleado, String areaAsignada,
-                               double costoHora, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin,
-                               double cantidadHoras, double costoBase, double incrementoExtra, double costoTotal) {
-        this.idAsignacion = idAsignacion;
-        this.idCotizacion = idCotizacion;
-        this.idEmpleado = idEmpleado;
-        this.areaAsignada = areaAsignada;
-        this.costoHora = costoHora;
-        this.fechaHoraInicio = fechaHoraInicio;
-        this.fechaHoraFin = fechaHoraFin;
-        this.cantidadHoras = cantidadHoras;
-        this.costoBase = costoBase;
-        this.incrementoExtra = incrementoExtra;
-        this.costoTotal = costoTotal;
+    // Constructor de la clase Cliente
+    public Cliente(int idCliente, String nombre, String dui, String tipoPersona, String telefono, String correo, String direccion, String estado, String creadoPor, Date fechaCreacion) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.dui = dui;
+        this.tipoPersona = tipoPersona;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.direccion = direccion;
+        this.estado = estado;
+        this.creadoPor = creadoPor;
+        this.fechaCreacion = fechaCreacion;
+        this.cotizaciones = new ArrayList<>();
+        this.proyectos = new ArrayList<>();
     }
 
-    public void asignarActividad() {
-        System.out.println("✅ Asignación registrada:");
-        System.out.println("ID Asignación: " + idAsignacion);
-        System.out.println("Cotización ID: " + idCotizacion);
-        System.out.println("Empleado ID: " + idEmpleado);
-        System.out.println("Área: " + areaAsignada);
-        System.out.println("Costo por hora: $" + costoHora);
-        System.out.println("Inicio: " + fechaHoraInicio);
-        System.out.println("Fin: " + fechaHoraFin);
-        System.out.println("Horas: " + cantidadHoras);
-        System.out.println("Costo base: $" + costoBase);
-        System.out.println("Incremento extra: " + incrementoExtra + "%");
-        System.out.println("Costo total: $" + costoTotal);
+    // Método para agregar una cotización al cliente
+    public void agregarCotizacion(Cotizacion cotizacion) {
+        this.cotizaciones.add(cotizacion);
     }
 
-    // Getters
-    public int getIdAsignacion() {
-        return idAsignacion;
+    // Método para agregar un proyecto al cliente
+    public void agregarProyecto(Proyecto proyecto) {
+        this.proyectos.add(proyecto);
     }
 
-    public int getIdCotizacion() {
-        return idCotizacion;
+    // Método para obtener información del cliente
+    public String obtenerInformacion() {
+        return "Cliente{" +
+                "idCliente=" + idCliente +
+                ", nombre='" + nombre + '\'' +
+                ", dui='" + dui + '\'' +
+                ", tipoPersona='" + tipoPersona + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", correo='" + correo + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", estado='" + estado + '\'' +
+                ", creadoPor='" + creadoPor + '\'' +
+                ", fechaCreacion=" + fechaCreacion +
+                '}';
     }
 
-    public int getIdEmpleado() {
-        return idEmpleado;
+    // Getters y setters para los atributos de la clase Cliente
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public String getAreaAsignada() {
-        return areaAsignada;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public double getCostoHora() {
-        return costoHora;
-    }
-
-    public LocalDateTime getFechaHoraInicio() {
-        return fechaHoraInicio;
-    }
-
-    public LocalDateTime getFechaHoraFin() {
-        return fechaHoraFin;
-    }
-
-    public double getCantidadHoras() {
-        return cantidadHoras;
-    }
-
-    public double getCostoBase() {
-        return costoBase;
-    }
-
-    public double getIncrementoExtra() {
-        return incrementoExtra;
-    }
-
-    public double getCostoTotal() {
-        return costoTotal;
-    }
+    // ... (Getters y setters para los demás atributos)
 }
