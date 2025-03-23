@@ -17,7 +17,6 @@ Cómo ejecutar el proyecto'
 
 3. Ejecutar el archivo `Main.java` para la versión gráfica
 
-4. (Opcional) Ejecutar `MainConsola.java` para la versión por consola
 
 Menú Principal
 ![image](https://github.com/user-attachments/assets/9de5d363-aa51-47a6-bf98-f12f2aaed021)
